@@ -1,6 +1,9 @@
 package com.jurados.controllers;
 
 import com.jurados.entities.AdmEntity;
+import com.jurados.entities.AvaliadorEntity;
+import com.jurados.entities.ColaboradorEntity;
+import com.jurados.entities.EventoEntity;
 import com.jurados.services.AdmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -38,5 +41,30 @@ public class AdmController {
     @PutMapping("/update")
     public ResponseEntity<AdmEntity> update(@RequestBody AdmEntity adm) {
         return ResponseEntity.ok(admService.update(adm));
+    }
+
+    @PutMapping("/updateColaborador")
+    public ResponseEntity<ColaboradorEntity> updateColaborador(@RequestBody ColaboradorEntity colaborador) {
+        return ResponseEntity.ok(admService.updateColaborador(colaborador));
+    }
+
+    @PutMapping("/updateAvaliador")
+    public ResponseEntity<AvaliadorEntity> updateAvaliador(@RequestBody AvaliadorEntity avaliador) {
+        return ResponseEntity.ok(admService.updateAvaliador(avaliador));
+    }
+
+    @PostMapping("/saveEvento")
+    public ResponseEntity<EventoEntity> saveEvento(@RequestBody EventoEntity evento) {
+        return ResponseEntity.ok(admService.saveEvento(evento));
+    }
+
+    @PostMapping("/selecaoAvaliador")
+    public ResponseEntity<EventoEntity> selecaoAvaliador(@RequestParam Long evento_id, @RequestParam List<Long> avaliadores_id) {
+        return ResponseEntity.ok(admService.selecaoAvaliador(evento_id, avaliadores_id));
+    }
+
+    @PutMapping("/sorteiaIdeias/{id}")
+    public ResponseEntity<EventoEntity> sorteiaIdeias(@PathVariable Long id) {
+        return ResponseEntity.ok(admService.sorteiaIdeias(id));
     }
 }

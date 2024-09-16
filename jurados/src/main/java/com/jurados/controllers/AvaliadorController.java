@@ -39,4 +39,9 @@ public class AvaliadorController {
     public ResponseEntity<AvaliadorEntity> update(@RequestBody AvaliadorEntity avaliador) {
         return ResponseEntity.ok(avaliadorService.update(avaliador));
     }
+
+    @PutMapping("/avaliaIdeia")
+    public ResponseEntity<String> avaliaIdeia(@RequestParam Long avaliador_id, @RequestParam Long ideia_id, @RequestParam int nota) {
+        return ResponseEntity.ok(avaliadorService.avaliaIdeia(avaliador_id, ideia_id, nota));
+    }
 }

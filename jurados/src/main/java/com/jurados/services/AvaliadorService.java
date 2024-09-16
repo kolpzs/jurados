@@ -68,7 +68,7 @@ public class AvaliadorService {
         if(valido == 0) {
             return "Ideia não foi cadastrado este Avaliador!";
         }
-        
+
         NotaEntity notaEntity = new NotaEntity();
         notaEntity.setNota_avaliador(nota);
         ideia.getNotas().add(notaEntity);
@@ -80,7 +80,7 @@ public class AvaliadorService {
     public float mediaNota(Long ideia_id) {
         IdeiaEntity ideia = ideiaService.findById(ideia_id);
         float tamanho = ideia.getNotas().size();
-        float media = ideia.getMedia();
+        float media = 0;
         for(NotaEntity nota : ideia.getNotas()) {
             media += nota.getNota_avaliador();
         }

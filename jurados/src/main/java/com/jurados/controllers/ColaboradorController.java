@@ -1,6 +1,7 @@
 package com.jurados.controllers;
 
 import com.jurados.entities.ColaboradorEntity;
+import com.jurados.entities.IdeiaEntity;
 import com.jurados.services.ColaboradorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -38,5 +39,10 @@ public class ColaboradorController {
     @PutMapping("/update")
     public ResponseEntity<ColaboradorEntity> update(@RequestBody ColaboradorEntity colaborador) {
         return ResponseEntity.ok(colaboradorService.update(colaborador));
+    }
+
+    @PostMapping("/saveIdeia")
+    public ResponseEntity<IdeiaEntity> saveIdeia(@RequestBody IdeiaEntity idea) {
+        return ResponseEntity.ok(colaboradorService.saveIdeia(idea));
     }
 }
